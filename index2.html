@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    Day 3
+  </head>
+  <body>
+    <div id="container"></div>
+    <p id="myPara">Initial Text</p>
+    <button onclick="addNewElement()">Add new element</button>
+    <button onclick="addText()">Add text</button>
+    <button onclick="checkGeoLocation()">Check GeoLocation</button>
+    <button onclick="getCurrentPosition()">Get Current Position</button>
+
+    <script>
+      function addNewElement() {
+        var container = document.getElementById('container')
+        var newElement = document.createElement('h1')
+        newElement.textContent = 'I am the new heading 1 added'
+        container.appendChild(newElement)
+      }
+
+      function addText() {
+        var myParagraph = document.getElementById('myPara')
+        myParagraph.textContent += 'something more'
+      }
+
+      function checkGeoLocation() {
+        if ('geolocation' in navigator) {
+          alert('Geolocation is supported')
+        } else {
+          alert('is not supported')
+        }
+      }
+
+      function getCurrentPosition() {
+        navigator.geolocation.getCurrentPosition(getPosition)
+      }
+
+      function getPosition(position) {
+        var latitude = position.coords.latitude
+        var longitude = position.coords.longitude
+        alert('Latitude: ' + latitude + ' Longitude: ' + longitude)
+      }
+    </script>
+  </body>
+</html>
